@@ -78,11 +78,10 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-local times = 1
 -- my shortcuts:
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'jk', function()
-  print('I love you!', times)
+  print 'I love you!'
 end)
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
