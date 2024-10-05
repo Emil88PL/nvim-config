@@ -7,8 +7,8 @@ on:
   pull_request:
     branches:
       - master
-  shedule:
-    -cron: '37 21 1 * *'
+  schedule:
+      - cron: '37 21 1 * *'
 
 jobs:
   syntax-check:
