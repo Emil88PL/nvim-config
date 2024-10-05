@@ -1,0 +1,32 @@
+name: Neovim Configuration Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Neovim and Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y neovim lua5.4 luarocks
+
+      - name: Install Luacheck
+        run: sudo luarocks install luacheck
+
+      - name: Check Neovim configuration syntax
+        run: |
+          nvim --headless -c 'luafile init.lua' -c 'qa!'
+
+      - name: Run Luacheck for linting
+        run: luacheck init.lua
